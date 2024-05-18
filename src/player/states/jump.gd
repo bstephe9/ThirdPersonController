@@ -8,17 +8,16 @@ var idle_state: State
 var walk_state: State
 
 @export
-var jump_force: float = 900.0
+var jump_force: float = 4.5
 
 func enter() -> void:
 	super()
-	parent.velocity.y = -jump_force
+	parent.velocity.y = jump_force
 
 func process_physics(delta: float) -> State:
 	super(delta)
-	parent.move_and_slide()	
 	
-	if parent.velocity.y > 0:
+	if parent.velocity.y < 0:
 		return fall_state
 		
 	if parent.is_on_floor():

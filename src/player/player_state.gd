@@ -19,4 +19,6 @@ func process_physics(delta: float) -> State:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, parent.speed)
 		parent.velocity.z = move_toward(parent.velocity.z, 0, parent.speed)
 	
+	parent.move_and_slide()
+
 	return null

@@ -20,7 +20,6 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	super(delta)
-	parent.move_and_slide()	
 	
 	if !parent.is_on_floor():
 		return fall_state

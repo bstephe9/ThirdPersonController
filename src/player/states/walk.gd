@@ -14,7 +14,6 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	super(delta)
-	parent.move_and_slide()
 	
 	if input_dir == Vector2.ZERO:
 		return idle_state
