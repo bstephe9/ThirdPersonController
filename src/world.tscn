@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b58kre57hhjsa"]
+[gd_scene load_steps=10 format=3 uid="uid://b58kre57hhjsa"]
 
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="1_i40bc"]
+[ext_resource type="Script" path="res://src/world.gd" id="1_txoyr"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assets/textures/grids/Orange/texture_01.png" id="2_b6scb"]
 [ext_resource type="PackedScene" uid="uid://dwawkobotgrra" path="res://src/player/player.tscn" id="3_inum5"]
 
@@ -26,6 +27,7 @@ uv1_triplanar = true
 albedo_texture = ExtResource("2_b6scb")
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_txoyr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
