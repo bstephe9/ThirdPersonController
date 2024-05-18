@@ -1,8 +1,7 @@
 extends PlayerState
 
-@export var fall_state: State
 @export var idle_state: State
-@export var walk_state: State
+@export var fall_state: State
 
 func enter() -> void:
 	super()
@@ -15,7 +14,6 @@ func process_physics(delta: float) -> State:
 		return fall_state
 		
 	if parent.is_on_floor():
-		if input_dir != Vector2.ZERO:
-			return walk_state
-		return idle_state
+		if input_dir == Vector2.ZERO: return idle_state
+		
 	return null

@@ -1,8 +1,9 @@
 extends PlayerState
 
-@export var fall_state: State
-@export var jump_state: State
 @export var walk_state: State
+@export var run_state: State
+@export var jump_state: State
+@export var fall_state: State
 
 func enter() -> void:
 	super()
@@ -11,8 +12,7 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return jump_state
-	if Input.get_vector("move_left", "move_right", "move_forward", "move_backwards"):
-		return walk_state
+		
 	return null
 
 func process_physics(delta: float) -> State:
@@ -20,4 +20,8 @@ func process_physics(delta: float) -> State:
 	
 	if !parent.is_on_floor():
 		return fall_state
+	if input_dir != Vector2.ZERO:
+		if Input.is_action_pressed('sprint'): return run_state
+		else: return walk_state
+		
 	return null
