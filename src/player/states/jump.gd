@@ -12,17 +12,17 @@ var jump_force: float = 900.0
 
 func enter() -> void:
 	super()
-	player.velocity.y = -jump_force
+	parent.velocity.y = -jump_force
 
 func process_physics(delta: float) -> State:
 	super(delta)
+	parent.move_and_slide()	
 	
-	if player.velocity.y > 0:
+	if parent.velocity.y > 0:
 		return fall_state
-	
-	if player.is_on_floor():
+		
+	if parent.is_on_floor():
 		if input_dir != Vector2.ZERO:
 			return walk_state
 		return idle_state
-	
 	return null

@@ -12,7 +12,7 @@ func _input(_event: InputEvent) -> void:
 		release_mouse() if mouse_captured else capture_mouse()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process_(delta: float) -> void:
+func _process(delta: float) -> void:
 	pass
 
 func capture_mouse() -> void:

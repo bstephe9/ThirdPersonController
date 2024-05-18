@@ -9,10 +9,10 @@ var walk_state: State
 
 func enter() -> void:
 	super()
-	player.velocity.x = 0
+	parent.velocity.x = 0
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('jump') and player.is_on_floor():
+	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
 		return jump_state
 	if Input.get_vector("move_left", "move_right", "move_forward", "move_backwards"):
 		return walk_state
@@ -20,7 +20,10 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	super(delta)
+	parent.move_and_slide()	
 	
-	if !player.is_on_floor():
+	if !parent.is_on_floor():
 		return fall_state
 	return null
+
+	
