@@ -4,13 +4,10 @@ extends CharacterBody3D
 @export var speed: float = 5.0
 @export var jump_velocity = 4.5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready
-var animations = $mixamo_base/AnimationPlayer
-@onready
-var state_machine = $StateMachine
+@onready var animations = $mixamo_base/AnimationPlayer
+@onready var state_machine = $StateMachine
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,

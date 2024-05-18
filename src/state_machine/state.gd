@@ -1,10 +1,7 @@
 class_name State
 extends Node
 
-@export
-var animation_name: String
-
-var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var animation_name: String
 
 ## Hold a reference to the parent so that it can be controlled by the state
 var parent: Player

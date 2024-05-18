@@ -1,18 +1,12 @@
 extends PlayerState
 
-@export
-var fall_state: State
-@export
-var idle_state: State
-@export
-var walk_state: State
-
-@export
-var jump_force: float = 4.5
+@export var fall_state: State
+@export var idle_state: State
+@export var walk_state: State
 
 func enter() -> void:
 	super()
-	parent.velocity.y = jump_force
+	parent.velocity.y = parent.jump_velocity
 
 func process_physics(delta: float) -> State:
 	super(delta)

@@ -1,9 +1,7 @@
 extends PlayerState
 
-@export
-var idle_state: State
-@export
-var walk_state: State
+@export var idle_state: State
+@export var walk_state: State
 
 func process_physics(delta: float) -> State:
 	super(delta)

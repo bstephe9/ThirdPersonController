@@ -1,11 +1,8 @@
 extends PlayerState
 
-@export
-var fall_state: State
-@export
-var jump_state: State
-@export
-var walk_state: State
+@export var fall_state: State
+@export var jump_state: State
+@export var walk_state: State
 
 func enter() -> void:
 	super()
@@ -24,5 +21,3 @@ func process_physics(delta: float) -> State:
 	if !parent.is_on_floor():
 		return fall_state
 	return null
-
-	

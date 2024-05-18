@@ -1,14 +1,14 @@
 class_name PlayerState
 extends State
 ## Processes the shared physics behavior between all player states, such 
-## as getting input direction, and applying gravity. 
+## as getting input direction, applying gravity, and movement. 
 
 var input_dir: Vector2
 var direction: Vector3
 
 func process_physics(delta: float) -> State:
 	if not parent.is_on_floor():
-		parent.velocity.y -= gravity * delta
+		parent.velocity.y -= parent.gravity * delta
 
 	input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	direction = (parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
