@@ -1,22 +1,22 @@
-extends State
+extends PlayerState
 
-@export var idle_state: State
-@export var fall_state: State
-@export var jump_state: State
-
-func enter() -> void:
-	super()
-	parent.velocity.x = 0
+@export
+var fall_state: State
+@export
+var idle_state: State
+@export
+var jump_state: State
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
+	if Input.is_action_just_pressed('jump') and player.is_on_floor():
 		return jump_state
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
-	parent.move_and_slide()
+	super(delta)
 	
-	if !parent.is_on_floor():
+	if input_dir == Vector2.ZERO:
+		return idle_state
+	if !player.is_on_floor():
 		return fall_state
 	return null
