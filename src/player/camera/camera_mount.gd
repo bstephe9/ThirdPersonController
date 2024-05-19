@@ -10,19 +10,15 @@ extends Node3D
 @onready var dy = 0
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and GameVariables.mouse_captured:
 		dx = -event.relative.y * v_sensitivity
 		dy = -event.relative.x * h_sensitivity
 		
-		## For horizontal rotation, rotate the player. Since the camera is
-		## attached to the player, rotating the player rotates the camera.
+		## For horizontal rotation (around the y-axis), rotate the player. 
+		## Since the camera is attached to the player, rotating the 
+		## player rotates the camera.
 		get_parent().rotate_y(deg_to_rad(dy))
 		
-		## Vertical rotation
+		## Vertical rotation (around the x-axis)
 		rotate_x(deg_to_rad(dx))
 		rotation.x = clamp(rotation.x, v_ground_limit, v_sky_limit)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#print("(%s, %s) %s" % [dx, dy, rotation])
-	pass
